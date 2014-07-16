@@ -32,18 +32,18 @@ loop do
     # timestamp = Time.parse(arrival['blockPosition']['at'])
 
     events << {
-      :eventType         => 'TriMet Status',
-      :eventVersion      => 1,
-      # :timestamp         => timestamp,
+      :eventType         => "TriMet Status",
+      :eventVersion      => 2,
+      # :timestamp       => timestamp,
       :status            => arrival['status'],
-      :estimated_arrival => estimated_arrival.xmlschema,
-      :scheduled_arrival => scheduled_arrival.xmlschema,
+      :estimated_arrival => estimated_arrival.to_i,
+      :scheduled_arrival => scheduled_arrival.to_i,
       :delay             => delay.to_i,
       :shortsign         => arrival['shortSign'],
       :direction         => arrival['dir'],
       :route             => arrival['route'],
       :stop_id           => arrival['locid'],
-      :stop_desc   => locations[arrival['locid']],
+      :stop_desc         => locations[arrival['locid']],
       :detoured          => arrival['detour'].to_s,
     }
 
