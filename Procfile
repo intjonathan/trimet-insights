@@ -1,0 +1,1 @@
+poller: ./trimet-insights.rb
